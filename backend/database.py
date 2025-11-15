@@ -10,7 +10,7 @@ import os
 
 # Database setup - MySQL for production
 # DATABASE_URL = "sqlite:///./agrisync.db"  # For development
-DATABASE_URL = "mysql+pymysql://root:babu1234@localhost/agrisync"  # For MySQL production
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./agrisync.db")  # Use environment variable for production
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
